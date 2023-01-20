@@ -19,12 +19,16 @@ function App() {
 
   useEffect(() => {
     if (Object.keys(expenseEdit).length > 0) {
-      handleNewExpense()
+      setModal(true);
+      setTimeout(() => {
+        setAnimateModal(true);
+      }, 500);
     }
   }, [expenseEdit])
 
   const handleNewExpense = () => {
     setModal(true);
+    setExpenseEdit({})
 
     setTimeout(() => {
       setAnimateModal(true);
@@ -33,14 +37,27 @@ function App() {
 
   const saveExpense = getExpense => {
     //console.log(expense);
-    getExpense.id = generateID();
-    getExpense.fecha = Date.now();
-    setExpense([...expense, getExpense]);
-
+    if (getExpense.id) {
+      //UPDATE EXPENSE
+      const expenseEdit = expense.map(gastoState => gastoState.id === getExpense.id ? getExpense : gastoState)
+      setExpense(expenseEdit);
+      setExpenseEdit({});
+    } else {
+      //NEW EXPENSE
+      getExpense.id = generateID();
+      getExpense.fecha = Date.now();
+      setExpense([...expense, getExpense]);
+    }
     setAnimateModal(false);
     setTimeout(() => {
       setModal(false);
     }, 500);
+  }
+
+  const deleteExpense = id => {
+    //console.log('Eliminando Gasto ID: ' + id);
+    const expenseEdit = expense.filter(gasto => gasto.id !== id)
+    setExpense(expenseEdit);
   }
 
   return (
@@ -58,6 +75,7 @@ function App() {
             <ListExpenses
               expense={expense}
               setExpenseEdit={setExpenseEdit}
+              deleteExpense={deleteExpense}
             />
           </main>
           <div className='nuevo-gasto'>
@@ -74,6 +92,7 @@ function App() {
         setAnimateModal={setAnimateModal}
         saveExpense={saveExpense}
         expenseEdit={expenseEdit}
+        setExpenseEdit={setExpenseEdit}
       />}
     </div>
   )
