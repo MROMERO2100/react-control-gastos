@@ -56,26 +56,6 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense, expenseEd
                 <legend>{expenseEdit.nombre ? 'Editar Gasto':'Nuevo Gasto'}</legend>
                 {mensaje && <Message tipo='error'> {mensaje}</Message>}
                 <div className='campo'>
-                    <label htmlFor='nombre'>Descripcion</label>
-                    <input
-                        id='nombre'
-                        type='text'
-                        placeholder='Agrega una Descripcion del Gasto'
-                        value={nombre}
-                        onChange={e => setNombre(e.target.value)}
-                    />
-                </div>
-                <div className='campo'>
-                    <label htmlFor='cantidad'>Cantidad</label>
-                    <input
-                        id='cantidad'
-                        type='number'
-                        placeholder='Agrega el Monto del Gasto'
-                        value={cantidad}
-                        onChange={e => setcantidad(Number(e.target.value))}
-                    />
-                </div>
-                <div className='campo'>
                     <label htmlFor='categoria'>Categoria</label>
                     <select id='categoria'
                         value={categoria}
@@ -90,6 +70,26 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense, expenseEd
                         <option value='ocio'>Ocio</option>
                         <option value='suscripciones'>Suscripciones</option>
                     </select>
+                </div>                
+                <div className='campo'>
+                    <label htmlFor='nombre'>Bien o Servicio</label>
+                    <input
+                        id='nombre'
+                        type='text'
+                        placeholder='Agregar Descripcion del Bien o Servicio'
+                        value={nombre}
+                        onChange={e => setNombre(e.target.value)}
+                    />
+                </div>
+                <div className='campo'>
+                    <label htmlFor='cantidad'>Monto Pagado</label>
+                    <input
+                        id='cantidad'
+                        type='number'
+                        placeholder='Agrega el Monto del Gasto'
+                        value={cantidad}
+                        onChange={e => setcantidad(Number(e.target.value))}
+                    />
                 </div>
                 <input type="submit"
                     value={expenseEdit.nombre ? 'Guardar Cambios':'Agregar Gasto'} />
