@@ -81,22 +81,6 @@ header h1 {
     padding: 10rem 0;
 }
 
-@media (min-width: 768px) {
-    .formulario {
-        width: 90%;
-        margin: 0 auto;
-        padding: 8rem 0;
-    }
-}
-
-@media (max-width: 560px) {
-    .formulario {
-        width: 80%;
-        margin: auto auto;
-        padding: 8rem 0;
-    }
-}
-
 .formulario legend {
     font-size: 3.6rem;
     text-align: center;
@@ -145,11 +129,31 @@ header h1 {
 }
 
 @media (min-width: 768px) {
+    .formulario {
+        width: 90%;
+        margin: 0 auto;
+        padding: 8rem 0;
+    }
+
     .formulario input[type="submit"] {
         display: block;
         padding: 1rem 5rem;
     }
 }
+
+@media (max-width: 560px) {
+    .formulario {
+        display: grid;
+        width: 100%;
+        margin: auto auto;
+        padding: 2rem 0;
+    }
+    .formulario .campo {
+        margin-bottom: 1rem;
+    }    
+}
+
+
 
 .formulario input[type="submit"]:hover {
     background-color: #042a67;
@@ -225,17 +229,7 @@ header h1 {
 
 @media (max-width: 560px) {
     .dos-columnas {
-        flex-direction: row;
-        align-items: center;
-        gap: 6rem;
-    }
-
-    .dos-columnas>div {
-        width: 50%;
-    }
-
-    .dos-columnas :first-child {
-        margin-bottom: 0;
+        flex-direction: column;
     }
 }
 
@@ -514,6 +508,16 @@ body .modal {
 
 .modal label {
     text-align: left;
+}
+
+@media (max-width: 560px) {
+    .modal .cerrar-modal {
+        z-index: 1;
+    }
+
+    .modal .formulario {
+        max-width: 100vh;
+    }
 }
 
 .CircularProgressbar .CircularProgressbar-text {
