@@ -148,9 +148,10 @@ header h1 {
         margin: auto auto;
         padding: 2rem 0;
     }
+
     .formulario .campo {
         margin-bottom: 1rem;
-    }    
+    }
 }
 
 
@@ -511,13 +512,14 @@ body .modal {
 }
 
 @media (max-width: 560px) {
-    .modal .cerrar-modal {
-        z-index: 1;
+    .modal .formulario {
+        width: 35rem;
+        top: 6rem;
     }
 
-    .modal .formulario {
-        max-width: 100vh;
-    }
+    .modal .cerrar-modal {
+        z-index: 1;
+    }    
 }
 
 .CircularProgressbar .CircularProgressbar-text {
