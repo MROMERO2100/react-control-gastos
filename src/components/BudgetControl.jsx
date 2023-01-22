@@ -37,7 +37,8 @@ const BudgetControl = ({ budget, setBudget, expense, setExpense, setIsValidBudge
             <div>
                 <CircularProgressbar
                     value={porcentaje}
-                    text={`${porcentaje}% Gastado`}
+                    //text={`${Number.isFinite(porcentaje) ? porcentaje : amountExpense}% Gastado`}
+                    text={Number.isFinite(porcentaje) ? porcentaje + ' % Gastado' : formatearMonto(amountExpense)+' Gastados'}
                     styles={buildStyles({
                         pathColor: porcentaje > 100 ? '#DC2626' : '#3B82F6',
                         trailColor: '#F5F5F5',
@@ -49,7 +50,7 @@ const BudgetControl = ({ budget, setBudget, expense, setExpense, setIsValidBudge
                 <button className='reset-app' type='button' onClick={handelResetApp}
 
                 >
-                    Resetear App
+                    Reiniciar App
                 </button>
                 <p><span>Presupuesto: </span> {formatearMonto(budget)}</p>
                 <p><span>Gastos:      </span> {formatearMonto(amountExpense)}</p>

@@ -45,7 +45,7 @@ function App() {
 
   useEffect(() => {
     const budgetLS = Number(localStorage.getItem('budget'));
-    if (budgetLS > 0) {
+    if (budgetLS >= 0) {
       setIsValidBudget(true);
     }
   }, [])
